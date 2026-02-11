@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/convert-gcps-favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>convert-gcps</title>
+  </head>
+  <body>
+    <h2>Step 1 -- Paste GCPs from allmaps</h2>
+    <p>
+        ex:<br>
+        1568 3236 -90.06925613 44.02153106<br>
+        1612 6006 -90.06885239 44.02033048<br>
+        1544 341 -90.06968814 44.02287122<br>
+        3492 5999 -90.06758505 44.02047896
+    </p>
+    <textarea id="allmaps_gcp_input" name="allmaps_gcp_input" cols="50" rows="10"></textarea>
+
+    <h2>Step 2 -- Convert to QGIS .points format</h2>
+    <p>This reformats coodinates from <i>mapX mapY sourceX sourceY</i> to <i>sourceX, sourceY, mapX, -mapY</i>.</p>
+    <button id="convertBtn" class="button">Convert</button>
+    <div id="resultDiv">
+        <pre id="resultGCPOutput"></pre>
+    </div>
+
+    <h2>Step 3 -- Download .points and import into QGIS Georeferencer</h2>
+
+    <form id="download-form">
+        <p>Enter a filename to download (ends in .points by default):</p>
+        <input id="fileNameInput" type="text" name="name" value="georeferenced_points">
+        <input class="button" type="submit" value="Download">
+    </form>
+
+    <footer>
+        <p>
+            <i>Built by Will McAllister on 2/11/26.</i>
+        </p>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
